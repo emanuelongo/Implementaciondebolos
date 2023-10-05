@@ -28,7 +28,7 @@ class Frame:
         pass
 
     def is_pare(self, indice_roll) -> bool:
-        return self
+        pass
 
     def is_strake(self) -> bool:
         pass
