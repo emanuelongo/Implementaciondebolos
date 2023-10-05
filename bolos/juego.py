@@ -1,14 +1,23 @@
 class Game:
-    pines = []
 
     def __init__(self):
-        pass
+        self.rolls = []
+        self.frame = Frame()
 
     def roll(self, pins: int):
-        self.pines.append(pins)
+        self.rolls.append(pins)
 
     def score(self) -> int:
-        return sum(self.pines)
+        resultado = 0
+        indice_roll = 0
+        for frameIndice in range(10):
+            if self.rolls[indice_roll] + self.rolls[indice_roll + 1] == 10:
+                resultado += self.rolls[indice_roll] + self.rolls[indice_roll + 1] + self.rolls[indice_roll + 2]
+            else:
+                resultado += self.rolls[indice_roll] + self.rolls[indice_roll + 1]
+            indice_roll += 2
+        self.frame.is_pare(indice_roll)
+        return resultado
 
 
 class Frame:
@@ -18,8 +27,8 @@ class Frame:
     def score(self) -> int:
         pass
 
-    def is_pare(self) -> bool:
-        pass
+    def is_pare(self, indice_roll) -> bool:
+        return self
 
     def is_strake(self) -> bool:
         pass
@@ -27,6 +36,7 @@ class Frame:
 
 class Roll:
     def __init__(self):
+        self.frame = Frame()
         self.pins = 0
 
 
